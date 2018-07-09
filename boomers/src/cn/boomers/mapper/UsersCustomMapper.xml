@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.boomers.mapper.UsersCustomMapper" >
+ 	<select id="isLogin" parameterType="cn.boomers.po.Users" resultType="cn.boomers.po.Users">
+		SELECT * FROM tb_user WHERE UserName = #{username} AND UserPassword = #{userpassword}
+	</select>
+	
+ 	<insert id="insert" parameterType="cn.boomers.po.Users" >
+	    insert into tb_user(UserName, UserPassword)
+	      values (#{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}
+	      )
+	</insert>
+	
+	<!-- <insert id="insert" parameterType="cn.boomers.po.Users" >
+	    insert into tb_user (UserId, UserName, UserPassword, 
+	      Sex, Email, Phone,RegTime,Gradeld,AddressId)
+	      values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, 
+	      #{sex,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER},#{regTime},#{gradeld,jdbcType=INTEGER},#{AddressId,jdbcType=VARCHAR}
+	      )
+	</insert> -->
+  
+	<select id="selectById" parameterType="cn.boomers.po.Users" resultType="cn.boomers.po.Users">
+		SELECT * FROM tb_user WHERE UserId=#{userId}
+	</select>
+	
+	<select id="userList" resultType="cn.boomers.po.Users">
+	    select * FROM tb_user
+	</select>
+</mapper>
